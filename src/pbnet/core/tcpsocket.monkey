@@ -1,11 +1,13 @@
 
 #Print "Target: ${TARGET} Lang: ${LANG}"
 
-#If (LANG="cpp" And TARGET<>"win8") Or LANG="java" Or TARGET="flash" Or TARGET="html5" Or TARGET="xna"
+#If LANG="cpp" Or LANG="java" Or TARGET="flash" Or TARGET="html5" Or TARGET="xna"
 
 
 	Import brl.stream
-	#If LANG="cpp" Or LANG="java"
+	#If LANG="cpp" And TARGET="win8"
+		Import "native/tcpsocket.${TARGET}.${LANG}"
+	#ElseIf LANG="cpp" Or LANG="java"
 		Import "native/tcpsocket.${LANG}"
 	#Else
 		Import "native/tcpsocket.${TARGET}.${LANG}"
